@@ -1,0 +1,67 @@
+
+buildscript {
+    project.ext {
+        bootVersion = '2.0.4.RELEASE'
+    }
+
+    repositories {
+        maven {
+            url "https://maven.aliyun.com/repository/central/"
+        }
+    }
+
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:0.6.0.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${project.bootVersion}"
+        classpath "org.flywaydb:flyway-gradle-plugin:5.0.7"
+    }
+}
+
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "org.flywaydb.flyway"
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
+apply plugin: "groovy"
+apply plugin: 'maven-publish'
+apply plugin: 'jacoco'
+
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    maven {
+        url "https://maven.aliyun.com/repository/central/"
+    }
+}
+
+sourceCompatibility = 1.8
+
+
+dependencies {
+    compile('mysql:mysql-connector-java')
+	compile('org.springframework.boot:spring-boot-starter')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('org.springframework:spring-context-support')
+	compile('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.cloud:spring-cloud-starter-config')
+    compile("org.flywaydb:flyway-core:5.0.6")
+
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: '2.0.1.RELEASE'
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+}
+
+ext {
+    springCloudVersion = 'Finchley.SR1'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+bootRun {
+    sourceResources sourceSets.main
+}

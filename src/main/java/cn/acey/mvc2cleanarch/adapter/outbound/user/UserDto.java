@@ -1,13 +1,13 @@
-package cn.acey.mvc2cleanarch.models;
+package cn.acey.mvc2cleanarch.adapter.outbound.user;
 
 import java.util.List;
 
 
-public class User {
+public class UserDto {
     private List<Integer> roles;
     private Long id;
 
-    public User(long id, List<Integer> roles) {
+    public UserDto(long id, List<Integer> roles) {
         this.id = id;
         this.roles = roles;
     }

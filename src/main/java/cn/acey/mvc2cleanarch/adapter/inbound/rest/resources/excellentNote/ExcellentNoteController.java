@@ -1,9 +1,9 @@
 package cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.excellentNote;
 
 import cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.auth.Auth;
-import cn.acey.mvc2cleanarch.models.BusinessException;
-import cn.acey.mvc2cleanarch.models.ExcellentNote;
-import cn.acey.mvc2cleanarch.models.User;
+import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
+import cn.acey.mvc2cleanarch.domain.excellentNote.ExcellentNote;
+import cn.acey.mvc2cleanarch.adapter.outbound.user.UserDto;
 import cn.acey.mvc2cleanarch.domain.excellentNote.ExcellentNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,15 +18,15 @@ public class ExcellentNoteController {
 
     @PostMapping("")
     public ResponseEntity mark(@RequestBody CreateExcellentNoteRequest createExcellentNoteRequest,
-                               @Auth User user) throws BusinessException {
-        ExcellentNote note = excellentNoteService.markAsExcellent(createExcellentNoteRequest.getNoteId(), user);
+                               @Auth UserDto userDto) throws BusinessException {
+        ExcellentNote note = excellentNoteService.markAsExcellent(createExcellentNoteRequest.getNoteId(), userDto);
         return new ResponseEntity(CreateExcellentNoteResponse.build(String.format("api/notes/%s", note.getId())), HttpStatus.CREATED);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity cancel(@PathVariable Long id,
-                                 @Auth User user) throws BusinessException {
-        excellentNoteService.cancelExcellentNote(id, user);
+                                 @Auth UserDto userDto) throws BusinessException {
+        excellentNoteService.cancelExcellentNote(id, userDto);
         return ResponseEntity.noContent().build();
     }
 

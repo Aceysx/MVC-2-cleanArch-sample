@@ -1,9 +1,9 @@
 package cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.note;
 
 import cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.auth.Auth;
-import cn.acey.mvc2cleanarch.models.BusinessException;
-import cn.acey.mvc2cleanarch.models.Note;
-import cn.acey.mvc2cleanarch.models.User;
+import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
+import cn.acey.mvc2cleanarch.domain.note.Note;
+import cn.acey.mvc2cleanarch.adapter.outbound.user.UserDto;
 import cn.acey.mvc2cleanarch.domain.notification.note.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +20,8 @@ public class NoteController {
 
     @PostMapping("")
     public ResponseEntity publishNote(@RequestBody CreateNoteRequest createNoteRequest,
-                                      @Auth User user) {
-        Note note = noteService.create(createNoteRequest, user);
+                                      @Auth UserDto userDto) {
+        Note note = noteService.create(createNoteRequest, userDto);
         return new ResponseEntity(CreateNoteResponse.build(("api/notes/" + note.getId())), HttpStatus.CREATED);
     }
 
@@ -34,15 +34,15 @@ public class NoteController {
     @PutMapping("{id}")
     public ResponseEntity update(@PathVariable Long id,
                                  @RequestBody UpdateNoteRequest updateNoteRequest,
-                                 @Auth User user) throws BusinessException {
-        noteService.updateNote(id,updateNoteRequest, user);
+                                 @Auth UserDto userDto) throws BusinessException {
+        noteService.updateNote(id,updateNoteRequest, userDto);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable Long id,
-                                 @Auth User user) throws BusinessException {
-        noteService.delete(id, user);
+                                 @Auth UserDto userDto) throws BusinessException {
+        noteService.delete(id, userDto);
         return ResponseEntity.noContent().build();
     }
 

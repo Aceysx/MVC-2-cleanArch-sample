@@ -1,7 +1,7 @@
 package cn.acey.mvc2cleanarch.adapter.outbound.persistence.excellentNote;
 
 
-import cn.acey.mvc2cleanarch.models.ExcellentNote;
+import cn.acey.mvc2cleanarch.domain.excellentNote.ExcellentNote;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

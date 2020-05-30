@@ -1,6 +1,6 @@
 package cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.auth;
 
-import cn.acey.mvc2cleanarch.models.User;
+import cn.acey.mvc2cleanarch.adapter.outbound.user.UserDto;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -26,6 +26,6 @@ public class AuthResolver implements HandlerMethodArgumentResolver {
         List<Integer> roles = Arrays.stream(roleStr.split(","))
             .map(Integer::valueOf)
             .collect(Collectors.toList());
-        return new User(Long.parseLong(id), roles);
+        return new UserDto(Long.parseLong(id), roles);
     }
 }

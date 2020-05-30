@@ -1,4 +1,4 @@
-package cn.acey.mvc2cleanarch.models;
+package cn.acey.mvc2cleanarch.domain.exception;
 
 public class BusinessException extends Exception {
     public BusinessException(String message) {

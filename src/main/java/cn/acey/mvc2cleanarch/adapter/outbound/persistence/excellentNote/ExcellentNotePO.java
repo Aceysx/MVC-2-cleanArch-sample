@@ -1,4 +1,4 @@
-package cn.acey.mvc2cleanarch.models;
+package cn.acey.mvc2cleanarch.adapter.outbound.persistence.excellentNote;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class ExcellentNote {
+public class ExcellentNotePO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -15,7 +15,7 @@ public class ExcellentNote {
     private Long teacherId;
     private Date createTime;
 
-    public ExcellentNote(long noteId, long teacherId) {
+    public ExcellentNotePO(long noteId, long teacherId) {
         this.createTime = new Date();
         this.noteId = noteId;
         this.teacherId = teacherId;

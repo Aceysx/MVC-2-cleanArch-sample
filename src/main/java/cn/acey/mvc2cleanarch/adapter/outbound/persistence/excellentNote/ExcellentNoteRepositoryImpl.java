@@ -1,8 +1,8 @@
 package cn.acey.mvc2cleanarch.adapter.outbound.persistence.excellentNote;
 
 
-import cn.acey.mvc2cleanarch.domain.excellentNote.ExcellentNote;
-import cn.acey.mvc2cleanarch.domain.excellentNote.ExcellentNoteRepository;
+import cn.acey.mvc2cleanarch.domain.context.excellentNote.ExcellentNote;
+import cn.acey.mvc2cleanarch.domain.context.excellentNote.ExcellentNoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

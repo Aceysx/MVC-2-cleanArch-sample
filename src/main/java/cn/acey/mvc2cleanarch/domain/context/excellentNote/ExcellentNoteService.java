@@ -1,8 +1,7 @@
-package cn.acey.mvc2cleanarch.domain.excellentNote;
+package cn.acey.mvc2cleanarch.domain.context.excellentNote;
 
 import cn.acey.mvc2cleanarch.application.gateway.notification.NotificationService;
-import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
-import cn.acey.mvc2cleanarch.adapter.outbound.user.UserDto;
+import cn.acey.mvc2cleanarch.domain.core.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,14 +18,13 @@ public class ExcellentNoteService {
         }
     }
 
-    public ExcellentNote markAsExcellent(Long noteId, UserDto userDto) throws BusinessException {
-        long teacherId = userDto.getId();
+    public ExcellentNote markAsExcellent(Long noteId, Long userId) throws BusinessException {
         if (isExist(noteId)) {
             throw new BusinessException("this note is marked excellent already");
         }
-        ExcellentNote excellentNote = new ExcellentNote(noteId, teacherId);
+        ExcellentNote excellentNote = new ExcellentNote(noteId, userId);
         excellentNote = excellentNoteRepository.save(excellentNote);
-        notificationService.markAsExcellentNotification(teacherId, noteId);
+        notificationService.markAsExcellentNotification(userId, noteId);
         return excellentNote;
     }
 
@@ -34,10 +32,8 @@ public class ExcellentNoteService {
         return excellentNoteRepository.isExist(noteId);
     }
 
-    public void cancelExcellentNote(Long id, UserDto userDto) throws BusinessException {
-        if (userDto.isTeacher()) {
-            deleteExcellentNote(id);
-            notificationService.cancelExcellentNotification(userDto.getId(), id);
-        }
+    public void cancelExcellentNote(Long id, Long userId) throws BusinessException {
+        deleteExcellentNote(id);
+        notificationService.cancelExcellentNotification(userId, id);
     }
 }

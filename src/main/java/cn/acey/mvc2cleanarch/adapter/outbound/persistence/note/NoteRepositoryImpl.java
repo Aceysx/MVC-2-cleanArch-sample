@@ -1,9 +1,9 @@
 package cn.acey.mvc2cleanarch.adapter.outbound.persistence.note;
 
 
-import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
-import cn.acey.mvc2cleanarch.domain.note.Note;
-import cn.acey.mvc2cleanarch.domain.note.NoteRepository;
+import cn.acey.mvc2cleanarch.domain.core.exception.BusinessException;
+import cn.acey.mvc2cleanarch.domain.context.note.Note;
+import cn.acey.mvc2cleanarch.domain.context.note.NoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,4 @@
-package cn.acey.mvc2cleanarch.domain.note;
-
-import cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.note.UpdateNoteRequest;
+package cn.acey.mvc2cleanarch.domain.context.note;
 
 import java.util.Date;
 
@@ -38,8 +36,8 @@ public class Note {
         return authorId;
     }
 
-    public void update(UpdateNoteRequest note) {
-        this.title = note.getTitle();
-        this.content = note.getContent();
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }

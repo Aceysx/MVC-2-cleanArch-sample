@@ -4,8 +4,8 @@ import cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.auth.Auth;
 import cn.acey.mvc2cleanarch.adapter.outbound.user.UserDto;
 import cn.acey.mvc2cleanarch.application.usecases.note.EditNoteUseCase;
 import cn.acey.mvc2cleanarch.application.usecases.note.QueryNoteUseCase;
-import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
-import cn.acey.mvc2cleanarch.domain.note.Note;
+import cn.acey.mvc2cleanarch.domain.core.exception.BusinessException;
+import cn.acey.mvc2cleanarch.domain.context.note.Note;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class NoteController {
     @PostMapping("")
     public ResponseEntity publishNote(@RequestBody CreateNoteRequest createNoteRequest,
                                       @Auth UserDto userDto) {
-        Note note = editNoteUseCase.create(createNoteRequest, userDto);
+        Note note = editNoteUseCase.create(userDto.getId(), createNoteRequest.getTitle(), createNoteRequest.getContent());
         return new ResponseEntity(CreateNoteResponse.build(("api/notes/" + note.getId())), HttpStatus.CREATED);
     }
 
@@ -38,14 +38,14 @@ public class NoteController {
     public ResponseEntity update(@PathVariable Long id,
                                  @RequestBody UpdateNoteRequest updateNoteRequest,
                                  @Auth UserDto userDto) throws BusinessException {
-        editNoteUseCase.updateNote(id, updateNoteRequest, userDto);
+        editNoteUseCase.updateNote(userDto.getId(), id, updateNoteRequest.getTitle(), updateNoteRequest.getContent());
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable Long id,
                                  @Auth UserDto userDto) throws BusinessException {
-        editNoteUseCase.delete(id, userDto);
+        editNoteUseCase.delete(id, userDto.getId());
         return ResponseEntity.noContent().build();
     }
 

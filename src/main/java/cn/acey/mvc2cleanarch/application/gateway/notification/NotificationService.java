@@ -1,6 +1,6 @@
 package cn.acey.mvc2cleanarch.application.gateway.notification;
 
-import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
+import cn.acey.mvc2cleanarch.domain.core.exception.BusinessException;
 
 public interface NotificationService {
 

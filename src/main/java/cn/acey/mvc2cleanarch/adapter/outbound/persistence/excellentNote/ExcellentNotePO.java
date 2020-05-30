@@ -1,6 +1,6 @@
 package cn.acey.mvc2cleanarch.adapter.outbound.persistence.excellentNote;
 
-import cn.acey.mvc2cleanarch.domain.excellentNote.ExcellentNote;
+import cn.acey.mvc2cleanarch.domain.context.excellentNote.ExcellentNote;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

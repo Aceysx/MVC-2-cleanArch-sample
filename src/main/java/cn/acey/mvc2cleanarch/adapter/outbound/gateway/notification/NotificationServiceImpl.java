@@ -2,8 +2,8 @@ package cn.acey.mvc2cleanarch.adapter.outbound.gateway.notification;
 
 import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
 import cn.acey.mvc2cleanarch.domain.note.NoteService;
-import cn.acey.mvc2cleanarch.domain.notification.NotificationDto;
-import cn.acey.mvc2cleanarch.domain.notification.NotificationService;
+import cn.acey.mvc2cleanarch.application.gateway.notification.NotificationDto;
+import cn.acey.mvc2cleanarch.application.gateway.notification.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

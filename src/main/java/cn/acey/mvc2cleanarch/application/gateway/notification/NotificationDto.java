@@ -1,4 +1,4 @@
-package cn.acey.mvc2cleanarch.domain.notification;
+package cn.acey.mvc2cleanarch.application.gateway.notification;
 
 public class NotificationDto {
     private Long noteId;
@@ -6,7 +6,6 @@ public class NotificationDto {
     private String content;
 
     public NotificationDto(long noteId, long teacherId, String content) {
-
         this.noteId = noteId;
         this.teacherId = teacherId;
         this.content = content;

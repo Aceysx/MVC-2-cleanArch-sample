@@ -1,4 +1,4 @@
-package cn.acey.mvc2cleanarch.domain.notification;
+package cn.acey.mvc2cleanarch.application.gateway.notification;
 
 import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
 

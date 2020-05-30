@@ -1,6 +1,6 @@
 package cn.acey.mvc2cleanarch.domain.excellentNote;
 
-import cn.acey.mvc2cleanarch.domain.notification.NotificationService;
+import cn.acey.mvc2cleanarch.application.gateway.notification.NotificationService;
 import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
 import cn.acey.mvc2cleanarch.adapter.outbound.user.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;

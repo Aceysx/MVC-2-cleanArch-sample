@@ -1,13 +1,12 @@
-package cn.acey.mvc2cleanarch.services;
+package cn.acey.mvc2cleanarch.domain.excellentNote;
 
+import cn.acey.mvc2cleanarch.domain.notification.NotificationService;
 import cn.acey.mvc2cleanarch.models.BusinessException;
 import cn.acey.mvc2cleanarch.models.ExcellentNote;
 import cn.acey.mvc2cleanarch.models.User;
-import cn.acey.mvc2cleanarch.repositories.ExcellentNoteRepository;
+import cn.acey.mvc2cleanarch.adapter.outbound.persistence.excellentNote.ExcellentNoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 @Service
 public class ExcellentNoteService {
@@ -22,15 +21,14 @@ public class ExcellentNoteService {
         }
     }
 
-    public ExcellentNote markAsExcellent(Map excellentNoteMap, User user) throws BusinessException {
-        long noteId = Long.parseLong(excellentNoteMap.get("noteId").toString());
+    public ExcellentNote markAsExcellent(Long noteId, User user) throws BusinessException {
         long teacherId = user.getId();
         if (isExist(noteId)) {
             throw new BusinessException("this note is marked excellent already");
         }
         ExcellentNote excellentNote = new ExcellentNote(noteId, teacherId);
         excellentNote = excellentNoteRepository.save(excellentNote);
-        notificationService.markAsExcellentNotification(teacherId,noteId);
+        notificationService.markAsExcellentNotification(teacherId, noteId);
         return excellentNote;
     }
 

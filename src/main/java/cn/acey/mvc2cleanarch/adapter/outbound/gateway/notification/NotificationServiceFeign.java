@@ -1,4 +1,4 @@
-package cn.acey.mvc2cleanarch.feign;
+package cn.acey.mvc2cleanarch.adapter.outbound.gateway.notification;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;

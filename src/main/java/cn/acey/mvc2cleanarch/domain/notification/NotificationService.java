@@ -1,8 +1,9 @@
-package cn.acey.mvc2cleanarch.services;
+package cn.acey.mvc2cleanarch.domain.notification;
 
-import cn.acey.mvc2cleanarch.feign.NotificationServiceFeign;
+import cn.acey.mvc2cleanarch.adapter.outbound.gateway.notification.NotificationServiceFeign;
 import cn.acey.mvc2cleanarch.models.BusinessException;
 import cn.acey.mvc2cleanarch.models.Note;
+import cn.acey.mvc2cleanarch.domain.notification.note.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

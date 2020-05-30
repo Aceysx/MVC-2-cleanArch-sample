@@ -1,5 +1,7 @@
 package cn.acey.mvc2cleanarch.models;
 
+import cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.note.UpdateNoteRequest;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,7 +45,7 @@ public class Note {
         return authorId;
     }
 
-    public void update(Note note) {
+    public void update(UpdateNoteRequest note) {
         this.title = note.getTitle();
         this.content = note.getContent();
     }

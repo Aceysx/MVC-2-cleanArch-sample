@@ -1,4 +1,4 @@
-package cn.acey.mvc2cleanarch.auth;
+package cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.auth;
 
 import cn.acey.mvc2cleanarch.models.User;
 import org.springframework.core.MethodParameter;

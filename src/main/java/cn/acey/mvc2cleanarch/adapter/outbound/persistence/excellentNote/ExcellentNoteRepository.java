@@ -1,4 +1,4 @@
-package cn.acey.mvc2cleanarch.repositories;
+package cn.acey.mvc2cleanarch.adapter.outbound.persistence.excellentNote;
 
 
 import cn.acey.mvc2cleanarch.models.ExcellentNote;

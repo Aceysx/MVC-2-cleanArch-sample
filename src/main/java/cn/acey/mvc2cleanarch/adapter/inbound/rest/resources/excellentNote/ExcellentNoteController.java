@@ -1,16 +1,14 @@
-package cn.acey.mvc2cleanarch.controllers;
+package cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.excellentNote;
 
-import cn.acey.mvc2cleanarch.auth.Auth;
+import cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.auth.Auth;
 import cn.acey.mvc2cleanarch.models.BusinessException;
 import cn.acey.mvc2cleanarch.models.ExcellentNote;
 import cn.acey.mvc2cleanarch.models.User;
-import cn.acey.mvc2cleanarch.services.ExcellentNoteService;
+import cn.acey.mvc2cleanarch.domain.excellentNote.ExcellentNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
-import java.util.Map;
 
 @RestController
 @RequestMapping("api/notes/excellent")
@@ -19,10 +17,10 @@ public class ExcellentNoteController {
     private ExcellentNoteService excellentNoteService;
 
     @PostMapping("")
-    public ResponseEntity mark(@RequestBody Map excellentNoteMap,
+    public ResponseEntity mark(@RequestBody CreateExcellentNoteRequest createExcellentNoteRequest,
                                @Auth User user) throws BusinessException {
-        ExcellentNote note = excellentNoteService.markAsExcellent(excellentNoteMap, user);
-        return ResponseEntity.created(URI.create("api/notes/" + note.getNoteId())).build();
+        ExcellentNote note = excellentNoteService.markAsExcellent(createExcellentNoteRequest.getNoteId(), user);
+        return new ResponseEntity(CreateExcellentNoteResponse.build(String.format("api/notes/%s", note.getId())), HttpStatus.CREATED);
     }
 
     @DeleteMapping("{id}")

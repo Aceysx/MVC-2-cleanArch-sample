@@ -4,7 +4,6 @@ import cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.note.CreateNoteReque
 import cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.note.UpdateNoteRequest;
 import cn.acey.mvc2cleanarch.adapter.outbound.user.UserDto;
 import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
-import cn.acey.mvc2cleanarch.adapter.outbound.persistence.note.NoteRepository;
 import cn.acey.mvc2cleanarch.domain.excellentNote.ExcellentNoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,11 +25,7 @@ public class NoteService {
     }
 
     public Note findNote(Long id) throws BusinessException {
-        return noteRepository.findById(id).orElseThrow(
-            () -> new BusinessException(
-                String.format("current note is not found with id %s", id)
-            )
-        );
+        return noteRepository.findById(id);
     }
 
     @Transactional

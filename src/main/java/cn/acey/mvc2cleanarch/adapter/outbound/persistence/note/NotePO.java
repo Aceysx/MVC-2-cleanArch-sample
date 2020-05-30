@@ -1,6 +1,7 @@
 package cn.acey.mvc2cleanarch.adapter.outbound.persistence.note;
 
 import cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.note.UpdateNoteRequest;
+import cn.acey.mvc2cleanarch.domain.note.Note;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,6 +24,14 @@ public class NotePO {
         this.content = content;
         this.authorId = authorId;
         createTime = new Date();
+    }
+
+    public static NotePO of(Note note) {
+        return new NotePO(note.getTitle(), note.getContent(), note.getAuthorId());
+    }
+
+    public static Note domain(NotePO note) {
+        return new Note(note.getTitle(), note.getContent(), note.getAuthorId());
     }
 
     public Long getId() {

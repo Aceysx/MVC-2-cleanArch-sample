@@ -3,7 +3,6 @@ package cn.acey.mvc2cleanarch.domain.excellentNote;
 import cn.acey.mvc2cleanarch.domain.notification.NotificationService;
 import cn.acey.mvc2cleanarch.domain.exception.BusinessException;
 import cn.acey.mvc2cleanarch.adapter.outbound.user.UserDto;
-import cn.acey.mvc2cleanarch.adapter.outbound.persistence.excellentNote.ExcellentNoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,7 +31,7 @@ public class ExcellentNoteService {
     }
 
     private boolean isExist(long noteId) {
-        return excellentNoteRepository.findByNoteId(noteId).isPresent();
+        return excellentNoteRepository.isExist(noteId);
     }
 
     public void cancelExcellentNote(Long id, UserDto userDto) throws BusinessException {

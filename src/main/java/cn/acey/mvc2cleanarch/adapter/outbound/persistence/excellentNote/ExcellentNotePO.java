@@ -1,5 +1,7 @@
 package cn.acey.mvc2cleanarch.adapter.outbound.persistence.excellentNote;
 
+import cn.acey.mvc2cleanarch.domain.excellentNote.ExcellentNote;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +21,14 @@ public class ExcellentNotePO {
         this.createTime = new Date();
         this.noteId = noteId;
         this.teacherId = teacherId;
+    }
+
+    public static ExcellentNotePO of(ExcellentNote excellentNote) {
+        return new ExcellentNotePO(excellentNote.getNoteId(), excellentNote.getTeacherId());
+    }
+
+    public static ExcellentNote domain(ExcellentNotePO excellentNote) {
+        return new ExcellentNote(excellentNote.getNoteId(), excellentNote.getTeacherId());
     }
 
     public Long getId() {

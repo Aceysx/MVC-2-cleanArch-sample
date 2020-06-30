@@ -1,16 +1,14 @@
 package cn.acey.mvc2cleanarch.adapter.outbound.gateway.notification;
 
-import cn.acey.mvc2cleanarch.domain.core.exception.BusinessException;
-import cn.acey.mvc2cleanarch.domain.context.note.NoteService;
 import cn.acey.mvc2cleanarch.application.gateway.notification.NotificationDto;
 import cn.acey.mvc2cleanarch.application.gateway.notification.NotificationService;
+import cn.acey.mvc2cleanarch.domain.core.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class NotificationServiceImpl implements NotificationService {
-    @Autowired
-    private NoteService noteService;
+
     @Autowired
     private NotificationServiceFeign notificationServiceFeign;
 

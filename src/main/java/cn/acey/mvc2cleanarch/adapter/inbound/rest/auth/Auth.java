@@ -1,4 +1,4 @@
-package cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.auth;
+package cn.acey.mvc2cleanarch.adapter.inbound.rest.auth;
 
 
 import java.lang.annotation.Documented;

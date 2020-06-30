@@ -1,4 +1,4 @@
-package cn.acey.mvc2cleanarch.adapter.outbound.user;
+package cn.acey.mvc2cleanarch.adapter.inbound.rest.dto;
 
 import java.util.List;
 

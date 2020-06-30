@@ -1,7 +1,7 @@
 package cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.note;
 
-import cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.auth.Auth;
-import cn.acey.mvc2cleanarch.adapter.outbound.user.UserDto;
+import cn.acey.mvc2cleanarch.adapter.inbound.rest.auth.Auth;
+import cn.acey.mvc2cleanarch.adapter.inbound.rest.dto.UserDto;
 import cn.acey.mvc2cleanarch.application.usecases.note.EditNoteUseCase;
 import cn.acey.mvc2cleanarch.application.usecases.note.QueryNoteUseCase;
 import cn.acey.mvc2cleanarch.domain.core.exception.BusinessException;

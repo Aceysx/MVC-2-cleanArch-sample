@@ -1,6 +1,6 @@
-package cn.acey.mvc2cleanarch.adapter.inbound.rest.resources.auth;
+package cn.acey.mvc2cleanarch.adapter.inbound.rest.auth;
 
-import cn.acey.mvc2cleanarch.adapter.outbound.user.UserDto;
+import cn.acey.mvc2cleanarch.adapter.inbound.rest.dto.UserDto;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;

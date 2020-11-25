@@ -1,6 +1,5 @@
 package cn.acey.mvc2cleanarch.domain.context.excellentNote;
 
-import cn.acey.mvc2cleanarch.application.gateway.notification.NotificationService;
 import cn.acey.mvc2cleanarch.domain.core.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,8 +8,6 @@ import org.springframework.stereotype.Service;
 public class ExcellentNoteService {
     @Autowired
     private ExcellentNoteRepository excellentNoteRepository;
-    @Autowired
-    private NotificationService notificationService;
 
     public void deleteExcellentNote(Long id) {
         if (isExist(id)) {
@@ -24,7 +21,6 @@ public class ExcellentNoteService {
         }
         ExcellentNote excellentNote = new ExcellentNote(noteId, userId);
         excellentNote = excellentNoteRepository.save(excellentNote);
-        notificationService.markAsExcellentNotification(userId, noteId);
         return excellentNote;
     }
 
@@ -32,8 +28,7 @@ public class ExcellentNoteService {
         return excellentNoteRepository.isExist(noteId);
     }
 
-    public void cancelExcellentNote(Long id, Long userId) throws BusinessException {
+    public void cancelExcellentNote(Long id) throws BusinessException {
         deleteExcellentNote(id);
-        notificationService.cancelExcellentNotification(userId, id);
     }
 }
